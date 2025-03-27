@@ -34,7 +34,8 @@ class NNBlock(nn.Module):
 
 
 class RandomFourierEncoding(nn.Module):
-    def __init__(self, num_features=50, sigma=1):
+    def __init__(self, input_dim, num_features=50, sigma=1):
+        super(RandomFourierEncoding, self).__init__()
         self.B = torch.randn(num_features, input_dim) * sigma
         self.num_features = num_features
 
