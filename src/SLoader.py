@@ -22,7 +22,9 @@ class SLoader():
         self.u = 1/np.sqrt(self.x**2 + self.y**2)
         phi = np.arccos(self.x*self.u) 
         self.phi = torch.where(self.y<0., -phi, phi).float()
+        self.phi = np.unwrap(self.phi, axis=0)
 
+        self.phi = torch.tensor(self.phi, dtype=torch.float32)
         self.u = torch.tensor(self.u, dtype=torch.float32)
 
 
